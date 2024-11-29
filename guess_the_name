@@ -1,1 +1,45 @@
-fwefhoewifewfo
+
+#for importing random package for using random function
+
+import random
+
+#list data type for saving mutiple elements
+words = ['a', 'b', 'c', 'd', 'e', 'f']
+
+#it will choose the random letters by some arithematical operation
+chosen_word = random.choice(words)
+#guessed word will save here in the list
+guessed_letters = []
+#max attempts 
+max_attempts = 6
+
+#current attempt value (by default = 0)
+attempts = 0
+
+
+#used the while loop for check the condition
+while attempts < max_attempts:
+    guess = input("Enter a letter: ")
+    guessed_letters.append(guess)
+
+    if guess in chosen_word:
+        print("Correct!")
+    else:
+        print("Incorrect!")
+        attempts += 1
+
+    hidden_word = ''
+    for letter in chosen_word:
+        if letter in guessed_letters:
+            hidden_word += letter
+        else:
+            hidden_word += '_'
+
+    print("Hidden Word:", hidden_word)
+
+    if hidden_word == chosen_word:
+        print("Congratulations! You guessed the word.")
+        break
+
+if attempts == max_attempts:
+    print("Game Over! You ran out of attempts.")
